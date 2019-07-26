@@ -1,0 +1,32 @@
+invDict = {'apples':{'price':.50, 'color':'red', 'amount':50},'bananas':{'price':.60, 'color':'yellow', 'amount':100},'cucumbers':{'price':.60, 'color':'green', 'amount':75},'dates':{'price':.25, 'color':'brown', 'amount':250}}
+billDict = {}
+bill = 0 
+user_name = input('Hello! Please enter your name, or press Enter to quit: ')
+
+while True:
+    
+    for fruit, value in invDict.items():
+        price = invDict[fruit]['price']
+        amount = int(invDict[fruit]['amount'])
+        color = invDict[fruit]['color']
+        
+        quant = input(('How many '+  color + ' ' + fruit + ' at ' + str(price) +' each would you like to buy? '))
+        
+        if (int(quant) < amount):
+            total_fruit = (float(quant) * (float(price)))
+            print('OK. Those will cost', total_fruit)
+            billDict[fruit] = [price, quant, total_fruit]
+            bill = bill + total_fruit 
+    
+            
+        elif (int(quant) > amount):
+            print('Sorry, we do not have any more', fruit)
+        
+    else: #(str(quant == '')):
+        for fruit, value in billDict.items():
+            print(billDict[fruit][1] , fruit + ' at ' + str(billDict[fruit][0]) + ' = ' + str(billDict[fruit][2]))
+    print('\n' + user_name + "'s total is "  + str(bill))
+        
+        
+            
+            
